@@ -29,7 +29,7 @@ export default class Progress extends React.Component<ProgressProps, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps: ProgressProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: ProgressProps) {
     if (nextProps.wrapWidth !== this.props.wrapWidth) {
       this.setState({ wrapWidth: nextProps.wrapWidth });
     }
@@ -49,6 +49,7 @@ export default class Progress extends React.Component<ProgressProps, any> {
       Animated.timing(this.state.percentage, {
         toValue: this.getWidth(),
         duration: 1000,
+        useNativeDriver: true,
       }).start();
     }
   }
